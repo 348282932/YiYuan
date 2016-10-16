@@ -12,12 +12,17 @@ namespace YiYuan.Web.Controllers
     /// </summary>
     public class ProductController : Controller
     {
-        // GET: Product
+        /// <summary>
+        /// 价格商品列表
+        /// </summary>
+        /// <param name="id">十元，是二元</param>
+        /// <returns></returns>
         [Route("product/{id}")]
         public ActionResult Index(int id = 0)
         {
 
             var list = new List<ProductListViewModel>();
+
             list.Add(new ProductListViewModel());
             list.Add(new ProductListViewModel());
             list.Add(new ProductListViewModel());
@@ -44,20 +49,21 @@ namespace YiYuan.Web.Controllers
         /// <returns></returns>
         public ActionResult Detail(int id = 0)
         {
-            //var activityBusiness = new IssueBusiness();       
+            var issueBusiness = new IssueBusiness();
 
-            //ViewBag.Data=activityBusiness.GetFirstByWhere(t=>t.GoodsId==id, t=>new {
-            //   t.Goods.Name,
-            //   t.Goods.Title,
-            //   t.No,
-            //   t.EndNumber,
-            //   t.EndTime,               
-            //   t.Goods.Description
+            //ViewBag.Data = issueBusiness.GetFirstByWhere(t => t.GoodsId == id, t => new
+            //{
+            //    t.Goods.Name,
+            //    t.Goods.Title,
+            //    t.No,
+            //    t.EndNumber,
+            //    t.EndTime,
+            //    t.Goods.Description
             //});
 
-            ViewBag.Data = new ProductViewModel();
-
-            return View();
+            var model = new ProductViewModel();
+            //ViewBag.Data = model;
+            return View(model);
         }
 
         /// <summary>

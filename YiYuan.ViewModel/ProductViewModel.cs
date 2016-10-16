@@ -1,13 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace YiYuan.ViewModel
 {
     public class ProductViewModel
     {
+        public ProductViewModel()
+        {
+            Name = "";
+            Title = "";
+            Description = "";
+            EndTime = DateTime.Now;
+
+            ImgUrls = new List<string>();
+        }
+
         /// <summary>
         /// 名称
         /// </summary>
@@ -38,6 +45,11 @@ namespace YiYuan.ViewModel
         /// 开奖时间
         /// </summary>
         public DateTime EndTime { get; set; }
+
+        /// <summary>
+        /// 产品图片
+        /// </summary>
+        public List<string> ImgUrls { get; set; }
 
     }
 }

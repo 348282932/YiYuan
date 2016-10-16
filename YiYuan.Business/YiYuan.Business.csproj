@@ -55,6 +55,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityBusiness.cs" />
+    <Compile Include="ActivityGoodsBusiness.cs" />
+    <Compile Include="GoodsBusiness.cs" />
     <Compile Include="IssueBusiness.cs" />
     <Compile Include="AdminInfoBusiness.cs" />
     <Compile Include="EFConfigure.cs" />
