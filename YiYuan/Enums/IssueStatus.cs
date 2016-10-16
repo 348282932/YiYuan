@@ -39,6 +39,11 @@
         /// <summary>
         /// 客户已收到
         /// </summary>
-        CustomerReceived = 6
+        CustomerReceived = 6,
+
+        /// <summary>
+        /// 暂停
+        /// </summary>
+        Suspend = 7
     }
 }

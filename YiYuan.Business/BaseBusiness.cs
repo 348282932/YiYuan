@@ -137,9 +137,18 @@ namespace YiYuan.Business
         /// <param name="orderLambda">排序表达式</param>
         /// <param name="selectExpression">查询表达式</param>
         /// <returns></returns>
-        public IBusinessResponse<ICollection<TOut>> GetByWhere<TOut, TKey>(Expression<Func<T, bool>> where, Expression<Func<T, TKey>> orderLambda, Expression<Func<T, TOut>> selectExpression)
+        public IBusinessResponse<ICollection<TOut>> GetByWhere<TOut, TKey>(Expression<Func<T, bool>> where, Expression<Func<T, TKey>> orderLambda, CodeOrderType codeOrderType, Expression<Func<T, TOut>> selectExpression)
         {
-            var query_data = this.GetQueryable().Where(where).OrderBy(orderLambda).Select(selectExpression).ToList();
+            List<TOut> query_data;
+
+            if (codeOrderType == CodeOrderType.Asc)
+            {
+                query_data = this.GetQueryable().Where(where).OrderBy(orderLambda).Select(selectExpression).ToList();
+            }
+            else
+            {
+                query_data = this.GetQueryable().Where(where).OrderByDescending(orderLambda).Select(selectExpression).ToList();
+            }
 
             return new BusinessResponse<ICollection<TOut>>(query_data);
         }
@@ -772,6 +781,26 @@ namespace YiYuan.Business
             return resultEntity;
         }
 
+        /// <summary>
+        /// 新增
+        /// </summary>
+        /// <param name="entity">要新增的实体</param>
+        /// <param name="IsSubmit">是否马上提交</param>
+        /// <param name="rowNumber">受影响行数</param>
+        /// <returns></returns>
+        public T Create(T entity, out int rowNumber, bool IsSubmit = true)
+        {
+            var resultEntity = context.Set<T>().Add(entity);
+
+            rowNumber = 0;
+
+            if (IsSubmit)
+            {
+                rowNumber = context.SaveChanges();
+            }
+
+            return resultEntity;
+        }
 
         /// <summary>
         /// 批量新增

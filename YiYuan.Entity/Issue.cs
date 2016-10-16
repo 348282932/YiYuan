@@ -16,6 +16,11 @@ namespace YiYuan.Entity
         public int No { get; set; }
 
         /// <summary>
+        /// 上一期编号
+        /// </summary>
+        public int PNo { get; set; }
+
+        /// <summary>
         /// 结束次数
         /// </summary>
         public int EndNumber { get; set; }
@@ -26,7 +31,7 @@ namespace YiYuan.Entity
         public decimal TotalPrice { get; set; }
 
         /// <summary>
-        /// 商品编号
+        /// 活动商品编号
         /// </summary>
         public int ActivityGoodsId { get; set; }
 
